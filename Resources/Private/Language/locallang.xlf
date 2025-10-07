@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file source-language="en" datatype="plaintext" original="messages" date="2025-06-02T12:00:00Z">
+        <body>
+            <trans-unit id="tx_ximatypo3dashboardnews_domain_model_news">
+                <source>Dashboard News</source>
+            </trans-unit>
+            <trans-unit id="tx_ximatypo3dashboardnews_domain_model_news.title">
+                <source>Title</source>
+            </trans-unit>
+            <trans-unit id="tx_ximatypo3dashboardnews_domain_model_news.description">
+                <source>Description</source>
+            </trans-unit>
+            <trans-unit id="tx_ximatypo3dashboardnews_domain_model_news.link">
+                <source>Link</source>
+            </trans-unit>
+            <trans-unit id="tx_ximatypo3dashboardnews_domain_model_news.pub_date">
+                <source>Publication Date</source>
+            </trans-unit>
+
+            <trans-unit id="dashboard.title">
+                <source>Editing</source>
+            </trans-unit>
+            <trans-unit id="dashboard.title">
+                <source>My Dashboard</source>
+            </trans-unit>
+
+            <trans-unit id="widgets.news.title">
+                <source>Editorial News</source>
+            </trans-unit>
+            <trans-unit id="widgets.news.description">
+                <source>Displays a short list of important messages and announcements for the editorial team.</source>
+            </trans-unit>
+            <trans-unit id="widgets.news.empty">
+                <source>Could not find content.</source>
+            </trans-unit>
+            <trans-unit id="widgets.news.read_more">
+                <source>Read more</source>
+            </trans-unit>
+
+            <trans-unit id="widgets.feed.title">
+                <source>Editorial Feed</source>
+            </trans-unit>
+            <trans-unit id="widgets.feed.description">
+                <source>Displays a short list of important news feed items for the editorial team.</source>
+            </trans-unit>
+            <trans-unit id="widgets.feed.empty">
+                <source>Could not fetch content.</source>
+            </trans-unit>
+            <trans-unit id="widgets.feed.read_more">
+                <source>Read more</source>
+            </trans-unit>
+
+            <trans-unit id="widgets.welcome.title">
+                <source>Welcome</source>
+            </trans-unit>
+            <trans-unit id="widgets.welcome.description">
+                <source>Welcomes editors personally and provides a quick overview of the editorial interface.</source>
+            </trans-unit>
+            <trans-unit id="widgets.welcome.greeting">
+                <source>👋 Hello %s</source>
+            </trans-unit>
+            <trans-unit id="widgets.welcome.intro">
+                <source><![CDATA[Welcome to the editorial view of <strong>%s</strong>. Here you can create, edit, and manage content — TYPO3 CMS helps you maintain your website in a structured, secure, and efficient manner.]]></source>
+            </trans-unit>
+            <trans-unit id="widgets.welcome.help">
+                <source>If you have questions, you can start by consulting the »TYPO3 Manual«. Should you still need help, please contact your administrator or web team.</source>
+            </trans-unit>
+            <trans-unit id="widgets.welcome.help.manual">
+                <source>Manual</source>
+            </trans-unit>
+            <trans-unit id="widgets.welcome.help.tutorial">
+                <source>TYPO3 Editors Guide</source>
+            </trans-unit>
+            <trans-unit id="widgets.welcome.keyfacts_last_login">
+                <source>Last login:</source>
+            </trans-unit>
+            <trans-unit id="widgets.welcome.keyfacts_last_login.never">
+                <source>Never</source>
+            </trans-unit>
+            <trans-unit id="widgets.welcome.keyfacts_role">
+                <source>Role:</source>
+            </trans-unit>
+            <trans-unit id="widgets.welcome.keyfacts_admin_notice">
+                <source>Logged in with admin access.</source>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>

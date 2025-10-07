@@ -1,0 +1,47 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+    xmlns:dashboard="http://typo3.org/ns/TYPO3/CMS/Dashboard/ViewHelpers"
+    xmlns:core="http://typo3.org/ns/TYPO3/CMS/Core/ViewHelpers"
+    data-namespace-typo3-fluid="true">
+
+<div class="widget-content-title d-flex" style="gap:10px;">
+    <core:icon identifier="dashboard-news-widgets-feed" size="small"/>
+    <span><f:translate key="widgets.feed.title" extensionName="XimaTypo3DashboardNews"/></span>
+</div>
+<div class="widget-content-main x--dashboard-news-widget--main" style="--mask: linear-gradient(to bottom, rgba(0, 0, 0, 1) 0, rgba(0, 0, 0, 1) 90%, rgba(0, 0, 0, 0) 95%, rgba(0, 0, 0, 0) 0) 100% 90% / 100% 100% repeat-x;-webkit-mask: var(--mask);mask: var(--mask);">
+    <f:if condition="{items}">
+        <f:then>
+            <div class="widget-table-wrapper">
+                <table class="widget-table">
+                    <f:for each="{items}" as="item">
+                        <tr>
+                            <td>
+                                <f:variable name="croppedDescription">{item.description -> f:format.stripTags() -> f:format.crop(maxCharacters: maxCharacters, append: '…')}</f:variable>
+                                <f:link.typolink parameter="{item.link}" target="_blank" additionalAttributes="{rel: 'noopener noreferrer'}">
+                                    <strong>{item.title}</strong>
+                                </f:link.typolink>
+                                <small><time datetime="{item.pubDate -> f:format.date(format: '%Y-%m-%d')}">{item.pubDate -> f:format.date()}</time></small>
+                                <p>{croppedDescription}</p>
+                                <f:if condition="{item.link} && ({croppedDescription} != {item.description})">
+                                    <f:link.typolink parameter="{item.link}" target="_blank" additionalAttributes="{rel: 'noopener noreferrer'}">
+                                        <f:translate key="widgets.feed.read_more" extensionName="XimaTypo3DashboardNews"/>
+                                    </f:link.typolink>
+                                </f:if>
+                            </td>
+                        </tr>
+                    </f:for>
+                </table>
+            </div>
+        </f:then>
+        <f:else>
+            <div class="row widget-no-items-found">
+                <div class="col-xs-12">
+                    <p>
+                        <f:translate key="widgets.feed.empty" extensionName="XimaTypo3DashboardNews"/>
+                    </p>
+                </div>
+            </div>
+        </f:else>
+    </f:if>
+</div>
+
+</html>

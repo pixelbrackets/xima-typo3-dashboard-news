@@ -1,0 +1,60 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+    xmlns:dashboard="http://typo3.org/ns/TYPO3/CMS/Dashboard/ViewHelpers"
+    xmlns:core="http://typo3.org/ns/TYPO3/CMS/Core/ViewHelpers"
+    data-namespace-typo3-fluid="true">
+
+<div class="widget-content-title d-flex" style="gap:10px;">
+    <core:icon identifier="dashboard-news-widgets-welcome" size="small"/>
+    <span><f:translate key="widgets.welcome.title" extensionName="XimaTypo3DashboardNews" /></span>
+</div>
+<div class="widget-content-main x--dashboard-news-widget--main" style="--mask: linear-gradient(to bottom, rgba(0, 0, 0, 1) 0, rgba(0, 0, 0, 1) 90%, rgba(0, 0, 0, 0) 95%, rgba(0, 0, 0, 0) 0) 100% 90% / 100% 100% repeat-x;-webkit-mask: var(--mask);mask: var(--mask);">
+    <h2>
+        <f:variable name="displayname">{realName ?: username}</f:variable>
+        <f:translate key="widgets.welcome.greeting" arguments="{0: displayname}" extensionName="XimaTypo3DashboardNews" />
+    </h2>
+
+    <p>
+        <f:format.raw><f:translate key="widgets.welcome.intro" arguments="{0: siteName}" extensionName="XimaTypo3DashboardNews" /></f:format.raw>
+    </p>
+
+    <p>
+        <f:translate key="widgets.welcome.help" extensionName="XimaTypo3DashboardNews" />
+    </p>
+
+    <f:if condition="{options.manualUrl}">
+        <a href="{options.manualUrl}" class="btn btn-default" target="_blank" rel="noopener noreferrer">
+            <core:icon identifier="actions-notebook" size="small"/>
+            <f:translate key="widgets.welcome.help.manual" extensionName="XimaTypo3DashboardNews" />
+        </a>
+    </f:if>
+    <a href="https://docs.typo3.org/m/typo3/tutorial-editors/main/en-us/Index.html" class="btn btn-default" target="_blank" rel="noopener noreferrer">
+        <core:icon identifier="actions-notebook-typoscript" size="small"/>
+        <f:translate key="widgets.welcome.help.tutorial" extensionName="XimaTypo3DashboardNews" />
+    </a>
+
+    <div class="dashboard-keyfacts mt-5">
+        <span class="badge badge-default me-1 mb-1">
+            <f:translate key="widgets.welcome.keyfacts_last_login" extensionName="XimaTypo3DashboardNews" />
+            <f:if condition="{lastLogin}">
+                {lastLogin -> f:format.date(format: 'Y.m.d - H:i')}
+            </f:if>
+            <f:if condition="!{lastLogin}">
+                <f:translate key="widgets.welcome.keyfacts_last_login.never" extensionName="XimaTypo3DashboardNews" />
+            </f:if>
+        </span>
+        <f:if condition="{roles}">
+            <span class="badge badge-default me-1 mb-1"><f:translate key="widgets.welcome.keyfacts_role" extensionName="XimaTypo3DashboardNews" />
+                <f:for each="{roles}" as="role" iteration="iterator">
+                    {role}{f:if(condition:'{iterator.isLast}', then: '', else: ',')}
+                </f:for>
+            </span>
+        </f:if>
+        <span class="badge badge-default me-1 mb-1">{siteName}</span>
+        <span class="badge badge-default me-1 mb-1">TYPO3 {versionNumber}</span>
+        <f:if condition="{isAdmin}">
+            <span class="badge badge-warning"><f:translate key="widgets.welcome.keyfacts_admin_notice" extensionName="XimaTypo3DashboardNews" /></span>
+        </f:if>
+    </div>
+</div>
+
+</html>

@@ -1,0 +1,65 @@
+# yamllint disable rule:line-length
+---
+parameters:
+  xima_typo3_dashboard_news.widgets.news.options:
+    allowedPageUids: [0] # 0: root page (admins only), empty: all pages allowed
+    maxCharacters: 400
+  xima_typo3_dashboard_news.widgets.feed.options:
+    feedUrl: 'https://typo3.com/blog/blog.recent.xml'
+    maxCharacters: 200
+  xima_typo3_dashboard_news.widgets.welcome.options:
+    manualUrl: ''
+
+services:
+  _defaults:
+    autowire: true
+    autoconfigure: true
+    public: false
+
+  Xima\XimaTypo3DashboardNews\:
+    resource: '../Classes/*'
+
+  Xima\XimaTypo3DashboardNews\Widgets\News:
+    class: 'Xima\XimaTypo3DashboardNews\Widgets\News'
+    arguments:
+      $dataProvider: '@Xima\XimaTypo3DashboardNews\Widgets\Provider\DashboardNewsDataProvider'
+      $options: '%xima_typo3_dashboard_news.widgets.news.options%'
+    tags:
+      - name: dashboard.widget
+        identifier: 'tx_ximatypo3dashboardnews_news'
+        groupNames: 'news'
+        title: 'LLL:EXT:xima_typo3_dashboard_news/Resources/Private/Language/locallang.xlf:widgets.news.title'
+        description: 'LLL:EXT:xima_typo3_dashboard_news/Resources/Private/Language/locallang.xlf:widgets.news.description'
+        iconIdentifier: 'dashboard-news-widgets-news'
+        width: 'small'
+        height: 'medium'
+
+  Xima\XimaTypo3DashboardNews\Widgets\Feed:
+    class: 'Xima\XimaTypo3DashboardNews\Widgets\Feed'
+    arguments:
+      $dataProvider: '@Xima\XimaTypo3DashboardNews\Widgets\Provider\RssFeedDataProvider'
+      $options: '%xima_typo3_dashboard_news.widgets.feed.options%'
+    tags:
+      - name: dashboard.widget
+        identifier: 'tx_ximatypo3dashboardnews_feed'
+        groupNames: 'news'
+        title: 'LLL:EXT:xima_typo3_dashboard_news/Resources/Private/Language/locallang.xlf:widgets.feed.title'
+        description: 'LLL:EXT:xima_typo3_dashboard_news/Resources/Private/Language/locallang.xlf:widgets.feed.description'
+        iconIdentifier: 'dashboard-news-widgets-feed'
+        width: 'small'
+        height: 'medium'
+
+  Xima\XimaTypo3DashboardNews\Widgets\Welcome:
+    class: 'Xima\XimaTypo3DashboardNews\Widgets\Welcome'
+    arguments:
+      $dataProvider: '@Xima\XimaTypo3DashboardNews\Widgets\Provider\WelcomeDataProvider'
+      $options: '%xima_typo3_dashboard_news.widgets.welcome.options%'
+    tags:
+      - name: dashboard.widget
+        identifier: 'tx_ximatypo3dashboardnews_welcome'
+        groupNames: 'general'
+        title: 'LLL:EXT:xima_typo3_dashboard_news/Resources/Private/Language/locallang.xlf:widgets.welcome.title'
+        description: 'LLL:EXT:xima_typo3_dashboard_news/Resources/Private/Language/locallang.xlf:widgets.welcome.description'
+        iconIdentifier: 'dashboard-news-widgets-welcome'
+        width: 'small'
+        height: 'medium'
