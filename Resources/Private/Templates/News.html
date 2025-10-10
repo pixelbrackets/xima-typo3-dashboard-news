@@ -17,7 +17,7 @@
                     <f:for each="{items}" as="item">
                         <tr>
                             <td>
-                                <f:variable name="croppedDescription">{item.description -> f:format.stripTags() -> f:format.crop(maxCharacters: maxCharacters, append: '…')}</f:variable>
+                                <f:variable name="croppedDescription">{item.description -> f:format.htmlentitiesDecode() -> f:format.stripTags() -> f:format.crop(maxCharacters: maxCharacters, append: '…')}</f:variable>
                                 <f:link.typolink parameter="{item.link}" target="_blank" additionalAttributes="{rel: 'noopener noreferrer'}">
                                     <strong>{item.title}</strong>
                                 </f:link.typolink>
