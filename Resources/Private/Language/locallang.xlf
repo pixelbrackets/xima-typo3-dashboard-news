@@ -21,8 +21,8 @@
             <trans-unit id="dashboard.title">
                 <source>Editing</source>
             </trans-unit>
-            <trans-unit id="dashboard.title">
-                <source>My Dashboard</source>
+            <trans-unit id="dashboard.description">
+                <source>Dashboard preset for the editorial team with news widgets to stay informed about important updates, announcements, and tasks.</source>
             </trans-unit>
 
             <trans-unit id="widgets.news.title">

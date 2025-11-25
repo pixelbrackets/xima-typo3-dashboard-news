@@ -29,7 +29,7 @@
             </trans-unit>
             <trans-unit id="dashboard.description">
                 <source />
-                <target>Preset for the editorial team</target>
+                <target>Dashboard Voreinstellung für das Redaktionsteam mit News-Widgets, um über wichtige Updates, Ankündigungen und Aufgaben auf dem Laufenden zu bleiben.</target>
             </trans-unit>
 
             <trans-unit id="widgets.news.title">
