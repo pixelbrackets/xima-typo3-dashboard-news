@@ -108,6 +108,16 @@ for the user appear on the board.
 to show your editors:
 [TYPO3 Docs - Dashboard Presets](https://docs.typo3.org/permalink/typo3-cms-dashboard:dashboard-presets)
 
+## Development
+
+To set up a development environment, please clone the repository and run
+
+```bash
+ddev start && ddev init-typo3
+```
+
+Execute the command again to reset the installation.
+
 ## License
 
 GNU General Public License version 2 or later
