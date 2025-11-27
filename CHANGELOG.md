@@ -1,5 +1,10 @@
 # Changelog
 
+## [1.1.0] - 2025-11-27
+
+- Feature: Refresh icons
+- Feature: Add DDEV with demo setup
+
 ## [1.0.2] - 2025-10-13
 
 - BUGFIX: Apply badge color in TYPO3 11
