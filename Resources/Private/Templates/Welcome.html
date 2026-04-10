@@ -35,7 +35,7 @@
     </a>
 
     <div class="dashboard-keyfacts mt-5">
-        <span class="badge badge-default {f:if(condition: version < 12, then: 'badge-info')} me-1 mb-1">
+l        <span class="badge badge-default me-1 mb-1">
             <f:translate key="widgets.welcome.keyfacts_last_login" extensionName="XimaTypo3DashboardNews" />
             <f:if condition="{lastLogin}">
                 {lastLogin -> f:format.date(format: 'Y.m.d - H:i')}
@@ -45,14 +45,14 @@
             </f:if>
         </span>
         <f:if condition="{roles}">
-            <span class="badge badge-default {f:if(condition: version < 12, then: 'badge-info')} me-1 mb-1"><f:translate key="widgets.welcome.keyfacts_role" extensionName="XimaTypo3DashboardNews" />
+            <span class="badge badge-default me-1 mb-1"><f:translate key="widgets.welcome.keyfacts_role" extensionName="XimaTypo3DashboardNews" />
                 <f:for each="{roles}" as="role" iteration="iterator">
                     {role}{f:if(condition:'{iterator.isLast}', then: '', else: ',')}
                 </f:for>
             </span>
         </f:if>
-        <span class="badge badge-default me-1 {f:if(condition: version < 12, then: 'badge-info')} mb-1">{siteName}</span>
-        <span class="badge badge-default me-1 {f:if(condition: version < 12, then: 'badge-info')} mb-1">TYPO3 {versionNumber}</span>
+        <span class="badge badge-default me-1 mb-1">{siteName}</span>
+        <span class="badge badge-default me-1 mb-1">TYPO3 {versionNumber}</span>
         <f:if condition="{isAdmin}">
             <span class="badge badge-warning"><f:translate key="widgets.welcome.keyfacts_admin_notice" extensionName="XimaTypo3DashboardNews" /></span>
         </f:if>
