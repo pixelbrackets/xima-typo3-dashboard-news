@@ -61,18 +61,14 @@ return [
         'link' => [
             'label' => 'LLL:EXT:xima_typo3_dashboard_news/Resources/Private/Language/locallang.xlf:tx_ximatypo3dashboardnews_domain_model_news.link',
             'config' => [
-                'type' => 'input',
-                'renderType' => 'inputLink',
-                'eval' => 'trim',
+                'type' => 'link',
                 'size' => 50,
             ],
         ],
         'pub_date' => [
             'label' => 'LLL:EXT:xima_typo3_dashboard_news/Resources/Private/Language/locallang.xlf:tx_ximatypo3dashboardnews_domain_model_news.pub_date',
             'config' => [
-                'type' => 'input',
-                'renderType' => 'inputDateTime',
-                'eval' => 'datetime',
+                'type' => 'datetime',
             ],
         ],
     ],

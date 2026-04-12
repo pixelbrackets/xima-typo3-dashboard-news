@@ -5,36 +5,44 @@ declare(strict_types=1);
 namespace Xima\XimaTypo3DashboardNews\Widgets;
 
 use Psr\Http\Message\ServerRequestInterface;
+use TYPO3\CMS\Backend\View\BackendViewFactory;
 use TYPO3\CMS\Core\Information\Typo3Version;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Dashboard\Widgets\ButtonProviderInterface;
 use TYPO3\CMS\Dashboard\Widgets\ListDataProviderInterface;
+use TYPO3\CMS\Dashboard\Widgets\RequestAwareWidgetInterface;
 use TYPO3\CMS\Dashboard\Widgets\WidgetConfigurationInterface;
 use TYPO3\CMS\Dashboard\Widgets\WidgetInterface;
-use TYPO3\CMS\Fluid\View\StandaloneView;
 
-class Welcome implements WidgetInterface
+class Welcome implements WidgetInterface, RequestAwareWidgetInterface
 {
     protected ServerRequestInterface $request;
 
     public function __construct(
         protected readonly WidgetConfigurationInterface $configuration,
         protected readonly ListDataProviderInterface $dataProvider,
+        protected readonly BackendViewFactory $backendViewFactory,
         protected readonly ?ButtonProviderInterface $buttonProvider = null,
         protected array $options = []
     ) {
     }
 
+    public function setRequest(ServerRequestInterface $request): void
+    {
+        $this->request = $request;
+    }
+
     public function renderWidgetContent(): string
     {
-        $template = GeneralUtility::getFileAbsFileName('EXT:xima_typo3_dashboard_news/Resources/Private/Templates/Welcome.html');
-
-        // preparing view
-        $view = GeneralUtility::makeInstance(StandaloneView::class);
-        $view->setFormat('html');
-        $view->setTemplateRootPaths(['EXT:xima_typo3_dashboard_news/Resources/Private/Templates/']);
-        $view->setPartialRootPaths(['EXT:xima_typo3_dashboard_news/Resources/Private/Partials/']);
-        $view->setTemplatePathAndFilename($template);
+        // @todo Remove StandaloneView fallback once v12 support is dropped
+        if (class_exists(\TYPO3\CMS\Fluid\View\StandaloneView::class)) {
+            $view = GeneralUtility::makeInstance(\TYPO3\CMS\Fluid\View\StandaloneView::class);
+            $view->setFormat('html');
+            $view->setTemplateRootPaths(['EXT:xima_typo3_dashboard_news/Resources/Private/Templates/']);
+            $view->setPartialRootPaths(['EXT:xima_typo3_dashboard_news/Resources/Private/Partials/']);
+        } else {
+            $view = $this->backendViewFactory->create($this->request, ['xima/xima-typo3-dashboard-news']);
+        }
 
         $view->assignMultiple([
             'configuration' => $this->configuration,
@@ -45,7 +53,7 @@ class Welcome implements WidgetInterface
         ]);
         $view->assignMultiple($this->dataProvider->getItems());
 
-        return $view->render();
+        return $view->render('Welcome');
     }
 
     public function getOptions(): array

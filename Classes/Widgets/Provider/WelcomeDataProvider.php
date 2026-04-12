@@ -5,12 +5,14 @@ declare(strict_types=1);
 namespace Xima\XimaTypo3DashboardNews\Widgets\Provider;
 
 use TYPO3\CMS\Core\Database\Connection;
-use TYPO3\CMS\Core\Database\ConnectionPool;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Dashboard\Widgets\ListDataProviderInterface;
 
 class WelcomeDataProvider implements ListDataProviderInterface
 {
+    public function __construct(private \TYPO3\CMS\Core\Database\ConnectionPool $connectionPool)
+    {
+    }
     /**
     * @throws \Doctrine\DBAL\Exception
     */
@@ -20,7 +22,7 @@ class WelcomeDataProvider implements ListDataProviderInterface
 
         $currentUserGroupIds = GeneralUtility::intExplode(',', (string)$user['usergroup'], true);
 
-        $queryBuilder = GeneralUtility::makeInstance(ConnectionPool::class)
+        $queryBuilder = $this->connectionPool
             ->getQueryBuilderForTable('be_groups');
 
         $groups = $queryBuilder

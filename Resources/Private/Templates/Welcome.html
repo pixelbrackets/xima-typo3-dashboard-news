@@ -35,7 +35,7 @@
     </a>
 
     <div class="dashboard-keyfacts mt-5">
-l        <span class="badge badge-default me-1 mb-1">
+        <span class="badge badge-default me-1 mb-1">
             <f:translate key="widgets.welcome.keyfacts_last_login" extensionName="XimaTypo3DashboardNews" />
             <f:if condition="{lastLogin}">
                 {lastLogin -> f:format.date(format: 'Y.m.d - H:i')}
@@ -47,7 +47,7 @@ l        <span class="badge badge-default me-1 mb-1">
         <f:if condition="{roles}">
             <span class="badge badge-default me-1 mb-1"><f:translate key="widgets.welcome.keyfacts_role" extensionName="XimaTypo3DashboardNews" />
                 <f:for each="{roles}" as="role" iteration="iterator">
-                    {role}{f:if(condition:'{iterator.isLast}', then: '', else: ',')}
+                    {role}<f:if condition="!{iterator.isLast}">,</f:if>
                 </f:for>
             </span>
         </f:if>

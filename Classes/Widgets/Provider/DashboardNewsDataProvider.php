@@ -5,8 +5,6 @@ declare(strict_types=1);
 namespace Xima\XimaTypo3DashboardNews\Widgets\Provider;
 
 use TYPO3\CMS\Core\Database\Connection;
-use TYPO3\CMS\Core\Database\ConnectionPool;
-use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Dashboard\Widgets\ListDataProviderInterface;
 
 class DashboardNewsDataProvider implements ListDataProviderInterface
@@ -15,6 +13,9 @@ class DashboardNewsDataProvider implements ListDataProviderInterface
     * @var array<int>
     */
     protected array $allowedPageUids = [0];
+    public function __construct(private \TYPO3\CMS\Core\Database\ConnectionPool $connectionPool)
+    {
+    }
 
     /**
     * @param array<int> $allowedPageUids
@@ -29,7 +30,7 @@ class DashboardNewsDataProvider implements ListDataProviderInterface
     */
     public function getItems(): array
     {
-        $queryBuilder = GeneralUtility::makeInstance(ConnectionPool::class)
+        $queryBuilder = $this->connectionPool
             ->getQueryBuilderForTable('tx_ximatypo3dashboardnews_domain_model_news');
 
         $queryBuilder = $queryBuilder
