@@ -34,11 +34,11 @@ return [
             ],
         ],
         'hidden' => [
-            'exclude' => 1,
             'label' => 'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.hidden',
             'config' => [
                 'type' => 'check',
             ],
+            'exclude' => 1,
         ],
 
         'title' => [
@@ -49,6 +49,7 @@ return [
                 'max' => 255,
                 'required' => true,
             ],
+            'exclude' => 1,
         ],
         'description' => [
             'label' => 'LLL:EXT:xima_typo3_dashboard_news/Resources/Private/Language/locallang.xlf:tx_ximatypo3dashboardnews_domain_model_news.description',
@@ -57,6 +58,7 @@ return [
                 'enableRichtext' => true,
                 'rows' => 5,
             ],
+            'exclude' => 1,
         ],
         'link' => [
             'label' => 'LLL:EXT:xima_typo3_dashboard_news/Resources/Private/Language/locallang.xlf:tx_ximatypo3dashboardnews_domain_model_news.link',
@@ -64,12 +66,14 @@ return [
                 'type' => 'link',
                 'size' => 50,
             ],
+            'exclude' => 1,
         ],
         'pub_date' => [
             'label' => 'LLL:EXT:xima_typo3_dashboard_news/Resources/Private/Language/locallang.xlf:tx_ximatypo3dashboardnews_domain_model_news.pub_date',
             'config' => [
                 'type' => 'datetime',
             ],
+            'exclude' => 1,
         ],
     ],
 ];
