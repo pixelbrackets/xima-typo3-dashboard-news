@@ -1,5 +1,10 @@
 # Changelog
 
+## [2.0.0] - 2026-04-21
+
+- Feature: Explicitly grant access to all fields
+- Feature: Drop support for TYPO3 v11, add support for TYPO3 v14
+
 ## [1.1.0] - 2025-11-27
 
 - Feature: Refresh icons
